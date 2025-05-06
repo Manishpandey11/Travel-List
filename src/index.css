@@ -1,0 +1,705 @@
+/* 
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
+];
+*/
+/* 
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2.4rem;
+  font-family: sans-serif;
+  color: #5a3e2b;
+  font-family: "Quicksand";
+  font-weight: 500;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+h1 {
+  text-align: center;
+  background-color: #f4a226;
+  font-family: "Monoton";
+  font-size: 8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  word-spacing: 30px;
+  letter-spacing: -5px;
+  padding: 2.4rem 0;
+}
+
+.add-form {
+  background-color: #e5771f;
+  padding: 2.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+h3 {
+  margin-right: 1.6rem;
+  font-size: 2.4rem;
+}
+
+button,
+select,
+input {
+  background-color: #ffebb3;
+  color: #5a3e2b;
+  font-family: inherit;
+  border: none;
+  border-radius: 10rem;
+  padding: 1.2rem 3.2rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.add-form button {
+  text-transform: uppercase;
+  background-color: #76c7ad;
+}
+
+.list {
+  background-color: #5a3e2b;
+  color: #ffebb3;
+  padding: 4rem 0;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.actions button,
+.list select {
+  text-transform: uppercase;
+  padding: 0.8rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0.8rem;
+}
+
+.list ul {
+  list-style: none;
+  width: 80%;
+  overflow: scroll;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  justify-content: center;
+  align-content: start;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+input[type="checkbox"] {
+  height: 2rem;
+  width: 2rem;
+  accent-color: #e5771f;
+}
+
+.list li button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  padding: 0.8rem;
+  transform: translateY(2px);
+}
+
+.stats {
+  background-color: #76c7ad;
+  text-align: center;
+  font-weight: 700;
+  padding: 3.2rem 0;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Monoton&display=swap');
+
+:root {
+  --color-primary: #f4a226;
+  --color-primary-dark: #e5771f;
+  --color-secondary: #76c7ad;
+  --color-tertiary: #5a3e2b;
+  --color-background: #f8f9fa;
+  --color-text: #2d3436;
+  --color-light: #ffebb3;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text);
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  box-shadow: var(--shadow-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
+  font-family: 'Monoton', cursive;
+  font-size: 7.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  word-spacing: 30px;
+  letter-spacing: -2px;
+  padding: 3.6rem 0;
+  color: white;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+h1::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+h1::after {
+  content: '✈️';
+  position: absolute;
+  font-size: 3.6rem;
+  right: 10%;
+  top: 30%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* Form */
+.add-form {
+  background: linear-gradient(
+    to right,
+    var(--color-primary-dark),
+    var(--color-primary)
+  );
+  padding: 3.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.add-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+  z-index: 2;
+}
+
+h3 {
+  margin-right: 1.6rem;
+  font-size: 2.2rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+}
+
+button,
+select,
+input {
+  background-color: white;
+  color: var(--color-text);
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 1.2rem 2.4rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+button:hover,
+select:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+button:active,
+select:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(118, 199, 173, 0.5);
+}
+
+.add-form button {
+  text-transform: uppercase;
+  background: var(--color-secondary);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-form button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+}
+
+.add-form button:hover::after {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+input[type='text'] {
+  min-width: 28rem;
+}
+
+/* List - FIXED SECTION */
+.list {
+  background-color: var(--color-tertiary);
+  color: var(--color-light);
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
+  overflow-y: auto;
+  position: relative;
+}
+
+.list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+/* FIX: Correct styles for the packing list elements */
+.list ul {
+  list-style: none;
+  width: 90%;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.6rem;
+  justify-content: center;
+  align-content: start;
+  padding: 1.6rem;
+}
+
+/* FIX: Removed the li:first-child selector that was causing issues */
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 1.6rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.list li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.list li:hover::before {
+  opacity: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.actions button,
+.list select {
+  text-transform: uppercase;
+  padding: 1rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 8px;
+}
+
+.actions button {
+  background-color: #e5771f;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.actions button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transform: translateX(-100%);
+}
+
+.actions button:hover::after {
+  animation: shimmer 1.5s infinite;
+}
+
+input[type='checkbox'] {
+  height: 2.4rem;
+  width: 2.4rem;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: var(--transition);
+  position: relative;
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+input[type='checkbox']:checked::before {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 1.6rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.list li button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-left: auto;
+  transition: var(--transition);
+  color: rgba(255, 235, 179, 0.7);
+  box-shadow: none;
+}
+
+.list li button:hover {
+  color: var(--color-primary);
+  transform: scale(1.2) rotate(3deg);
+  box-shadow: none;
+}
+
+/* FIX: Ensure the sapn (span) element is styled correctly */
+sapn {
+  font-size: 1.8rem;
+  font-weight: 500;
+  flex: 1;
+  transition: var(--transition);
+}
+
+/* Stats */
+.stats {
+  background: linear-gradient(135deg, var(--color-secondary), #65b599);
+  text-align: center;
+  font-weight: 600;
+  padding: 3.6rem 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.stats em {
+  font-style: normal;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Animation for checking items */
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+input[type='checkbox']:checked + sapn {
+  text-decoration: line-through;
+  color: rgba(255, 235, 179, 0.6);
+}
+
+input[type='checkbox']:checked {
+  animation: checkmark 0.4s cubic-bezier(0.65, 0, 0.35, 1.5) forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  h1 {
+    font-size: 5rem;
+    padding: 2.4rem 0;
+  }
+
+  .add-form {
+    flex-direction: column;
+    padding: 2.4rem 1.6rem;
+    gap: 1.2rem;
+  }
+
+  h3 {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .list ul {
+    width: 95%;
+    grid-template-columns: 1fr;
+  }
+
+  input[type='text'] {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    padding: 0 2rem;
+  }
+
+  .actions button,
+  .list select {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.list li {
+  animation: fadeIn 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.list li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.list li:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.list li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.list li:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.list li:nth-child(5) {
+  animation-delay: 0.3s;
+}
